@@ -85,7 +85,7 @@ const App: React.FC = () => {
                   >
                     1
                   </div>
-                  <span className="ml-2 text-xs sm:text-sm font-medium">
+                  <span className="ml-2 text-xs sm:text-sm font-medium text-wrap">
                     Choisir l'abonnement
                   </span>
                 </div>
@@ -102,7 +102,7 @@ const App: React.FC = () => {
                   >
                     2
                   </div>
-                  <span className="ml-2 text-xs sm:text-sm font-medium">
+                  <span className="ml-2 text-xs sm:text-sm font-medium text-wrap">
                     Vos informations
                   </span>
                 </div>
@@ -119,7 +119,7 @@ const App: React.FC = () => {
                   >
                     3
                   </div>
-                  <span className="ml-2 text-xs sm:text-sm font-medium">
+                  <span className="ml-2 text-xs sm:text-sm font-medium text-wrap">
                     Paiement
                   </span>
                 </div>
