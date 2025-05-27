@@ -6,10 +6,7 @@ export const Header: React.FC = () => {
     <header className="bg-content1 border-b border-default-200">
       <div className="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
         <div className="flex items-center">
-          <Icon
-            icon="lucide:shopping-bag"
-            className="text-primary text-2xl mr-2"
-          />
+          <img alt="logo" src="/favicon.png" className="size-10 mr-3" />
           <span className="font-semibold text-lg">Subscription Reseller</span>
         </div>
         <div className="flex items-center gap-4 flex-wrap justify-center">
