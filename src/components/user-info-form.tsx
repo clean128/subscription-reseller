@@ -7,7 +7,10 @@ interface UserInfoFormProps {
   onBack: () => void;
 }
 
-export const UserInfoForm: React.FC<UserInfoFormProps> = ({ onSubmit, onBack }) => {
+export const UserInfoForm: React.FC<UserInfoFormProps> = ({
+  onSubmit,
+  onBack,
+}) => {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [errors, setErrors] = React.useState({ name: "", email: "" });
@@ -43,7 +46,7 @@ export const UserInfoForm: React.FC<UserInfoFormProps> = ({ onSubmit, onBack }) 
   return (
     <form onSubmit={handleSubmit}>
       <h2 className="text-xl font-semibold mb-6">Vos informations</h2>
-      
+
       <div className="space-y-4 mb-6">
         <Input
           label="Nom complet"
@@ -54,37 +57,48 @@ export const UserInfoForm: React.FC<UserInfoFormProps> = ({ onSubmit, onBack }) 
           errorMessage={errors.name}
           isInvalid={!!errors.name}
           startContent={
-            <Icon icon="lucide:user" className="text-default-400 text-sm" />
+            <div className="flex items-center h-full pointer-events-none">
+              <Icon icon="lucide:user" className="text-default-400 text-sm" />
+            </div>
           }
         />
-        
-        <Input
-          label="Adresse email"
-          placeholder="Entrez votre adresse email"
-          value={email}
-          onValueChange={setEmail}
-          type="email"
-          isRequired
-          errorMessage={errors.email}
-          isInvalid={!!errors.email}
-          startContent={
-            <Icon icon="lucide:mail" className="text-default-400 text-sm" />
-          }
-        />
+
+        <div className="space-y-1">
+          <Input
+            label="Adresse email"
+            placeholder="Entrez votre adresse email"
+            value={email}
+            onValueChange={setEmail}
+            type="email"
+            isRequired
+            errorMessage={errors.email}
+            isInvalid={!!errors.email}
+            startContent={
+              <div className="flex items-center h-full pointer-events-none">
+                <Icon icon="lucide:mail" className="text-default-400 text-sm" />
+              </div>
+            }
+          />
+          <p className="text-xs text-default-500 ml-1">
+            L'invitation à votre abonnement sera envoyée à cette adresse email
+          </p>
+        </div>
       </div>
 
-      <div className="mt-8 flex justify-between">
+      <div className="mt-8 flex flex-col sm:flex-row justify-between gap-4 sm:gap-0">
         <Button
           variant="flat"
           onPress={onBack}
           startContent={<Icon icon="lucide:arrow-left" />}
+          className="order-2 sm:order-1"
         >
           Retour
         </Button>
-        <Button 
-          color="primary" 
+        <Button
+          color="primary"
           type="submit"
           endContent={<Icon icon="lucide:arrow-right" />}
+          className="order-1 sm:order-2"
         >
           Continuer au paiement
         </Button>

@@ -14,51 +14,51 @@ export default {
   plugins: [
     heroui({
       layout: {
-        dividerWeight: "1px", 
-        disabledOpacity: 0.45, 
+        dividerWeight: "1px",
+        disabledOpacity: 0.45,
         fontSize: {
-          tiny: "0.75rem",   // 12px
+          tiny: "0.75rem", // 12px
           small: "0.875rem", // 14px
           medium: "0.9375rem", // 15px
           large: "1.125rem", // 18px
         },
         lineHeight: {
-          tiny: "1rem", 
-          small: "1.25rem", 
-          medium: "1.5rem", 
-          large: "1.75rem", 
+          tiny: "1rem",
+          small: "1.25rem",
+          medium: "1.5rem",
+          large: "1.75rem",
         },
         radius: {
-          small: "6px", 
-          medium: "8px", 
-          large: "12px", 
+          small: "6px",
+          medium: "8px",
+          large: "12px",
         },
         borderWidth: {
-          small: "1px", 
-          medium: "1px", 
-          large: "2px", 
+          small: "1px",
+          medium: "1px",
+          large: "2px",
         },
       },
       themes: {
         light: {
           colors: {
             primary: {
-              "50": "#eef2ff",
-              "100": "#e0e7ff",
-              "200": "#c7d2fe",
-              "300": "#a5b4fc",
-              "400": "#818cf8",
-              "500": "#6366f1",
-              "600": "#4f46e5",
-              "700": "#4338ca",
-              "800": "#3730a3",
-              "900": "#312e81",
-              "DEFAULT": "#4f46e5",
-              "foreground": "#ffffff"
-            }
-          }
-        }
-      }
-    })
-  ]
-}
+              50: "#fef2f2",
+              100: "#fee2e2",
+              200: "#fecaca",
+              300: "#fca5a5",
+              400: "#f87171",
+              500: "#ef4444",
+              600: "#dc2626",
+              700: "#b91c1c",
+              800: "#991b1b",
+              900: "#7f1d1d",
+              DEFAULT: "#dc2626",
+              foreground: "#ffffff",
+            },
+          },
+        },
+      },
+    }),
+  ],
+};
