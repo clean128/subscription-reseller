@@ -196,7 +196,7 @@ const App: React.FC = () => {
 
       <footer className="py-6 bg-content1 border-t border-default-200">
         <div className="container mx-auto px-4 text-center text-sm text-default-500">
-          <p>© 2024 Subscription Reseller. Tous droits réservés.</p>
+          <p>© 2025 Subscription Reseller. Tous droits réservés.</p>
           <div className="mt-2 flex justify-center gap-4">
             <a href="#" className="hover:text-primary">
               Conditions d'utilisation

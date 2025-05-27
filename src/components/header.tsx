@@ -9,13 +9,19 @@ export const Header: React.FC = () => {
           <img alt="logo" src="/favicon.png" className="size-10 mr-3" />
           <span className="font-semibold text-lg">Subscription Reseller</span>
         </div>
-        <div className="flex items-center gap-4 flex-wrap justify-center">
+        <div className="flex items-center gap-5 flex-wrap justify-center">
           <div className="flex items-center text-sm">
-            <Icon icon="lucide:shield-check" className="text-success mr-1" />
+            <Icon
+              icon="lucide:shield-check"
+              className="text-success text-xl mr-1"
+            />
             <span>Paiement sécurisé</span>
           </div>
           <div className="flex items-center text-sm">
-            <Icon icon="lucide:headphones" className="text-primary mr-1" />
+            <Icon
+              icon="lucide:headphones"
+              className="text-primary text-xl mr-1"
+            />
             <span>Support 24/7</span>
           </div>
         </div>
