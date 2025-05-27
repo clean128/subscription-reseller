@@ -91,7 +91,8 @@ export const SubscriptionSelector: React.FC<SubscriptionSelectorProps> = ({
         Choisissez votre abonnement
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+      {/* For desktop */}
+      <div className="md:grid md:grid-cols-3 md:gap-4 mb-8 hidden">
         {subscriptions.map((subscription) => (
           <div
             key={subscription.id}
@@ -114,6 +115,41 @@ export const SubscriptionSelector: React.FC<SubscriptionSelectorProps> = ({
             <p className="text-sm text-default-500 mt-1 line-clamp-2">
               {subscription.description}
             </p>
+          </div>
+        ))}
+      </div>
+
+      {/* For mobile */}
+      <div className="flex flex-col gap-3 mb-8 md:hidden">
+        {subscriptions.map((subscription) => (
+          <div
+            key={subscription.id}
+            className={`border rounded-medium p-3 cursor-pointer transition-all ${
+              selectedSubscription?.id === subscription.id
+                ? "border-primary bg-primary-50"
+                : "border-default-200 hover:border-primary-200"
+            }`}
+            onClick={() => onSubscriptionSelect(subscription)}
+          >
+            <div className="flex items-center">
+              <div className="h-8 w-8 flex items-center justify-center mr-3">
+                <Icon icon={subscription.logo} className="h-6 w-6" />
+              </div>
+              <div className="flex-grow">
+                <h3 className="font-medium text-foreground">
+                  {subscription.name}
+                </h3>
+                <p className="text-xs text-default-500 line-clamp-1">
+                  {subscription.description}
+                </p>
+              </div>
+              {selectedSubscription?.id === subscription.id && (
+                <Icon
+                  icon="lucide:check-circle"
+                  className="text-primary ml-2 flex-shrink-0"
+                />
+              )}
+            </div>
           </div>
         ))}
       </div>
