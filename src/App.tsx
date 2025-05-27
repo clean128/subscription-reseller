@@ -1,0 +1,148 @@
+import React from "react";
+import { Card, CardBody, Divider } from "@heroui/react";
+import { SubscriptionSelector } from "./components/subscription-selector";
+import { UserInfoForm } from "./components/user-info-form";
+import { PaymentSection } from "./components/payment-section";
+import { SubscriptionFeatures } from "./components/subscription-features";
+import { Header } from "./components/header";
+
+export type Subscription = {
+  id: string;
+  name: string;
+  logo: string;
+  description: string;
+  features: string[];
+  durations: {
+    id: string;
+    name: string;
+    price: number;
+    regularPrice?: number;
+  }[];
+};
+
+const App: React.FC = () => {
+  const [step, setStep] = React.useState<number>(1);
+  const [selectedSubscription, setSelectedSubscription] = React.useState<Subscription | null>(null);
+  const [selectedDuration, setSelectedDuration] = React.useState<string | null>(null);
+  const [userInfo, setUserInfo] = React.useState({ name: "", email: "" });
+
+  const handleSubscriptionSelect = (subscription: Subscription) => {
+    setSelectedSubscription(subscription);
+    if (subscription.durations.length === 1) {
+      setSelectedDuration(subscription.durations[0].id);
+    }
+  };
+
+  const handleDurationSelect = (durationId: string) => {
+    setSelectedDuration(durationId);
+  };
+
+  const handleUserInfoSubmit = (name: string, email: string) => {
+    setUserInfo({ name, email });
+    setStep(3);
+  };
+
+  const handleContinueToPayment = () => {
+    if (selectedSubscription && selectedDuration) {
+      setStep(2);
+    }
+  };
+
+  const handleBack = () => {
+    if (step > 1) {
+      setStep(step - 1);
+    }
+  };
+
+  const selectedDurationDetails = React.useMemo(() => {
+    if (!selectedSubscription || !selectedDuration) return null;
+    return selectedSubscription.durations.find(d => d.id === selectedDuration);
+  }, [selectedSubscription, selectedDuration]);
+
+  return (
+    <div className="min-h-screen bg-background flex flex-col">
+      <Header />
+      
+      <main className="flex-grow flex flex-col items-center justify-center py-8 px-4">
+        <div className="w-full max-w-3xl">
+          <Card className="border border-default-200">
+            <CardBody className="p-6">
+              {/* Step indicator */}
+              <div className="flex justify-between mb-8">
+                <div className="flex items-center">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step === 1 ? "bg-primary text-white" : "bg-primary-100 text-primary-600"}`}>
+                    1
+                  </div>
+                  <span className="ml-2 text-sm font-medium">Choisir l'abonnement</span>
+                </div>
+                <div className="flex-grow mx-4 flex items-center">
+                  <div className="h-0.5 w-full bg-default-200"></div>
+                </div>
+                <div className="flex items-center">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step === 2 ? "bg-primary text-white" : "bg-primary-100 text-primary-600"}`}>
+                    2
+                  </div>
+                  <span className="ml-2 text-sm font-medium">Vos informations</span>
+                </div>
+                <div className="flex-grow mx-4 flex items-center">
+                  <div className="h-0.5 w-full bg-default-200"></div>
+                </div>
+                <div className="flex items-center">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step === 3 ? "bg-primary text-white" : "bg-primary-100 text-primary-600"}`}>
+                    3
+                  </div>
+                  <span className="ml-2 text-sm font-medium">Paiement</span>
+                </div>
+              </div>
+
+              {step === 1 && (
+                <SubscriptionSelector 
+                  onSubscriptionSelect={handleSubscriptionSelect}
+                  onDurationSelect={handleDurationSelect}
+                  selectedSubscription={selectedSubscription}
+                  selectedDuration={selectedDuration}
+                  onContinue={handleContinueToPayment}
+                />
+              )}
+
+              {step === 2 && (
+                <UserInfoForm 
+                  onSubmit={handleUserInfoSubmit}
+                  onBack={handleBack}
+                />
+              )}
+
+              {step === 3 && (
+                <PaymentSection 
+                  subscription={selectedSubscription!}
+                  durationDetails={selectedDurationDetails!}
+                  userInfo={userInfo}
+                  onBack={handleBack}
+                />
+              )}
+            </CardBody>
+          </Card>
+
+          {step === 1 && selectedSubscription && (
+            <div className="mt-6">
+              <SubscriptionFeatures subscription={selectedSubscription} />
+            </div>
+          )}
+        </div>
+      </main>
+
+      <footer className="py-6 bg-content1 border-t border-default-200">
+        <div className="container mx-auto px-4 text-center text-sm text-default-500">
+          <p>© 2024 Subscription Reseller. Tous droits réservés.</p>
+          <div className="mt-2 flex justify-center gap-4">
+            <a href="#" className="hover:text-primary">Conditions d'utilisation</a>
+            <a href="#" className="hover:text-primary">Politique de confidentialité</a>
+            <a href="#" className="hover:text-primary">Contactez-nous</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
