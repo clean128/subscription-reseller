@@ -132,7 +132,7 @@ const App: React.FC = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    transition={{ duration: 0.1, ease: "easeInOut" }}
                   >
                     <SubscriptionSelector
                       onSubscriptionSelect={handleSubscriptionSelect}
@@ -150,7 +150,7 @@ const App: React.FC = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    transition={{ duration: 0.1, ease: "easeInOut" }}
                   >
                     <UserInfoForm
                       onSubmit={handleUserInfoSubmit}
@@ -165,7 +165,7 @@ const App: React.FC = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    transition={{ duration: 0.1, ease: "easeInOut" }}
                   >
                     <PaymentSection
                       subscription={selectedSubscription!}
@@ -185,7 +185,7 @@ const App: React.FC = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, delay: 0.2, ease: "easeInOut" }}
+              transition={{ duration: 0.2, delay: 0.1, ease: "easeInOut" }}
               style={{ overflow: "hidden" }}
             >
               <SubscriptionFeatures subscription={selectedSubscription} />
